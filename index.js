@@ -1,6 +1,10 @@
 const redux = require('redux')
+const reduxLogger = require('redux-logger')
 const createStore = redux.createStore
 const combineReducers = redux.combineReducers
+const applyMiddlewear = redux.applyMiddleware
+const logger = reduxLogger.createLogger()
+
 
 
 const BUY_CAKE = "BUY_CAKE"
@@ -66,9 +70,9 @@ const rootReducer = combineReducers({
 })
 
 
-const store = createStore(rootReducer)
+const store = createStore(rootReducer, applyMiddlewear(logger))
 console.log("InitialState", store.getState())
-const unSubscribe = store.subscribe(() => console.log("UpdatedState", store.getState().icecream))
+const unSubscribe = store.subscribe(() => {})
 store.dispatch(buyCake())
 store.dispatch(buyCake())
 store.dispatch(buyCake())
