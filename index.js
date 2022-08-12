@@ -68,7 +68,7 @@ const rootReducer = combineReducers({
 
 const store = createStore(rootReducer)
 console.log("InitialState", store.getState())
-const unSubscribe = store.subscribe(() => console.log("UpdatedState", store.getState()))
+const unSubscribe = store.subscribe(() => console.log("UpdatedState", store.getState().icecream))
 store.dispatch(buyCake())
 store.dispatch(buyCake())
 store.dispatch(buyCake())
